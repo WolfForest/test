@@ -3,8 +3,10 @@ var app = express();
 
 app.set('port', (process.env.PORT || 5000));
 
-app.get('/', function(request, response) {
-  response.end('Test by Forest');
+app.use(express.static('public'));
+
+app.get('*', function(req, res) {
+  res.redirect('/');
 });
 
 app.listen(app.get('port'), function() {
